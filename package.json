@@ -18,7 +18,7 @@
     "typeorm": "^0.2.22"
   },
   "devDependencies": {
-    "@inkohx/eslint-config-codestyle": "^1.3.0",
+    "@inkohx/eslint-config-codestyle": "^1.3.1",
     "@types/node": "^13.7.1",
     "@types/ws": "^7.2.1",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
