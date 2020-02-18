@@ -24,7 +24,7 @@ export default abstract class Registry<K, V> extends Collection<K, V> {
 
   public abstract unregisterAll(): Promise<V[]>
 
-  protected scanDir (pattern: string, options?: IOptions): Promise<string[]> {
+  protected scanFiles (pattern: string, options?: IOptions): Promise<string[]> {
     return globAsync(pattern, options)
   }
 
