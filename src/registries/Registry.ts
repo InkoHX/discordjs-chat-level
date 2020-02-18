@@ -36,7 +36,7 @@ export default abstract class Registry<K, V> extends Collection<K, V> {
     delete require.cache[filePath]
     module.children.pop()
 
-    if (!this.isClassSyntax(Module)) throw new Error('Not class syntax.')
+    if (!this.isClassSyntax(Module)) throw new Error('Please use the ECMAScript 2015 class syntax.')
 
     return new Module(this.client)
   }
