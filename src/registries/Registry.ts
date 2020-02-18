@@ -17,7 +17,7 @@ export default abstract class Registry<K, V> extends Collection<K, V> {
     this.client = client
   }
 
-  public abstract register(relativePath: string): Promise<V>
+  public abstract register (relativePath: string): Promise<V>
 
   public unregister (key: K): V {
     const value = this.get(key)
