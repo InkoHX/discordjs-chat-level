@@ -12,7 +12,7 @@ export type RegisterData<K, V> = Readonly<{
   value: V
 }>
 
-export default abstract class Registry<K, V> extends Collection<K, V> {
+export default class Registry<K, V> extends Collection<K, V> {
   public readonly client: Client
 
   public constructor (client: Client) {
