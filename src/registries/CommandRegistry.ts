@@ -1,7 +1,7 @@
-import Registry, { RegisterData } from './Registry'
+import { Registry, RegisterData } from '.'
 import Command from '../structures/Command'
 
-export default class CommandRegistry extends Registry<string, Command> {
+export class CommandRegistry extends Registry<string, Command> {
   public async registerAll (): Promise<Command[]> {
     const modules = (await this.scanFiles('commands/**/*.{js,ts}'))
       .map((file) => this.loadModule(file))
