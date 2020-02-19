@@ -3,15 +3,14 @@ import Client from '../Client'
 import util from 'util'
 import path from 'path'
 import glob, { IOptions } from 'glob'
+import { Class } from '../common'
 
 const globAsync = util.promisify(glob)
 
-export type Class<T> = new (...args: unknown[]) => T
-
-export interface RegisterData<K, V> {
+export type RegisterData<K, V> = Readonly<{
   key: K,
   value: V
-}
+}>
 
 export default abstract class Registry<K, V> extends Collection<K, V> {
   public readonly client: Client
