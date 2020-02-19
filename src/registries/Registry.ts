@@ -8,6 +8,11 @@ const globAsync = util.promisify(glob)
 
 export type Class<T> = new (...args: unknown[]) => T
 
+export interface RegisterData<K, V> {
+  key: K,
+  value: V
+}
+
 export default abstract class Registry<K, V> extends Collection<K, V> {
   public readonly client: Client
 
@@ -17,20 +22,22 @@ export default abstract class Registry<K, V> extends Collection<K, V> {
     this.client = client
   }
 
-  public abstract register (relativePath: string): Promise<V>
+  public register (data: RegisterData<K, V>): V {
+    this.set(data.key, data.value)
+
+    return data.value
+  }
 
   public unregister (key: K): V {
     const value = this.get(key)
-    if (!value) throw new Error('There is no such key.')
+    if (!value || this.has(key)) throw new Error('The key does not exist.')
     this.delete(key)
 
     return value
   }
 
-  public async registerAll (pattern: string, options?: IOptions): Promise<V[]> {
-    const files = await this.scanFiles(pattern, options)
-
-    return Promise.all(files.map((file) => this.register(file)))
+  public registerAll (data: RegisterData<K, V>[]): Promise<V[]> {
+    return Promise.all(data.map((value) => this.register(value)))
   }
 
   public unregisterAll (): Promise<V[]> {
@@ -50,7 +57,7 @@ export default abstract class Registry<K, V> extends Collection<K, V> {
       delete require.cache[absolutePath]
       module.children.pop()
 
-      if (!this.isClassSyntax(Module)) throw new Error('Please use the ECMAScript 2015 class syntax.')
+      if (!this.isClassSyntax(Module)) throw new Error('Please use the ES2015 class syntax.')
 
       return new Module(this.client)
     } catch (error) {
