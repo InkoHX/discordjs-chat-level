@@ -22,6 +22,7 @@ export default abstract class Registry<K, V> extends Collection<K, V> {
   }
 
   public register (data: RegisterData<K, V>): V {
+    if (this.has(data.key)) throw new Error(`${data.key} is already in use.`)
     this.set(data.key, data.value)
 
     return data.value
@@ -29,7 +30,7 @@ export default abstract class Registry<K, V> extends Collection<K, V> {
 
   public unregister (key: K): V {
     const value = this.get(key)
-    if (!value || this.has(key)) throw new Error('The key does not exist.')
+    if (!value || this.has(key)) throw new Error(`${key} does not exist.`)
     this.delete(key)
 
     return value
