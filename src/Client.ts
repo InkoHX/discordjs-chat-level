@@ -1,10 +1,8 @@
-import './extensions/index'
-
-import { Client } from 'discord.js'
+import { Client as DjsClient } from 'discord.js'
 import { createConnection, Connection, getConnectionOptions } from 'typeorm'
 import path from 'path'
 
-export default class extends Client {
+export class Client extends DjsClient {
   public async login (token?: string): Promise<string> {
     await this.connectDatabase()
       .catch(console.error)

@@ -1,5 +1,5 @@
 import { Collection } from 'discord.js'
-import Client from '../Client'
+import { Client } from '..'
 import util from 'util'
 import path from 'path'
 import glob, { IOptions } from 'glob'

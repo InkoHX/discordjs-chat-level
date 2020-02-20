@@ -1,4 +1,4 @@
-import Client from '../Client'
+import { Client } from '..'
 
 export default class Structure {
   public readonly client: Client

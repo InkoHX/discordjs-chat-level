@@ -7,7 +7,7 @@ export class CommandRegistry extends Registry<string, Command> {
       .map((file) => this.loadModule(file))
 
     const result = (await Promise.all(modules))
-      .filter<Command>((value: unknown): value is Command => value instanceof Command)
+      .filter<Command>((value): value is Command => value instanceof Command)
       .map<RegisterData<string, Command>>((command) => this.toRegisterData(command))
 
     return super.registerAll(result)

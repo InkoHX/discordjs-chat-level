@@ -1,5 +1,5 @@
 import Structure from './Structure'
-import Client from '../Client'
+import { Client } from '..'
 import { Message } from 'discord.js'
 
 export default abstract class Command extends Structure {
