@@ -4,8 +4,8 @@
   "description": "Discord.js with TypeORM",
   "license": "MIT",
   "scripts": {
-    "start": "node ./dist/index.js",
-    "start:dev": "ts-node ./src/index.ts",
+    "start": "node ./dist/bot.js",
+    "start:dev": "ts-node ./src/bot.ts",
     "compile": "tsc -p .",
     "compile:test": "tsc -p . --noEmit",
     "lint": "eslint --ext .ts .",
