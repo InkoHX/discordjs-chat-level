@@ -1,10 +1,27 @@
-import { Client as DjsClient } from 'discord.js'
+import { CommandRegistry, EventRegistry } from './registries'
+import { Client as DjsClient, ClientOptions } from 'discord.js'
 import { createConnection, Connection, getConnectionOptions } from 'typeorm'
 import path from 'path'
 
 export class Client extends DjsClient {
+  public readonly commands: CommandRegistry
+
+  public readonly events: EventRegistry
+
+  public constructor (options?: ClientOptions) {
+    super(options)
+
+    this.commands = new CommandRegistry(this)
+
+    this.events = new EventRegistry(this)
+  }
+
   public async login (token?: string): Promise<string> {
-    await this.connectDatabase()
+    await Promise.all([
+      this.connectDatabase(),
+      this.commands.registerAll(),
+      this.events.registerAll()
+    ])
       .catch(console.error)
 
     return super.login(token)
