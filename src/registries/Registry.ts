@@ -2,7 +2,6 @@ import { Collection } from 'discord.js'
 import { Client } from '..'
 import { Class } from '../common'
 import util from 'util'
-import path from 'path'
 import glob from 'glob'
 
 const globAsync = util.promisify(glob)
@@ -45,12 +44,11 @@ export class Registry<K, V> extends Collection<K, V> {
   }
 
   protected scanFiles (pattern: string): Promise<string[]> {
-    return globAsync(pattern, { cwd: this.client.path })
+    return globAsync(pattern, { cwd: this.client.path, absolute: true })
   }
 
-  protected async loadModule (relativePath: string): Promise<unknown> {
+  protected async loadModule (absolutePath: string): Promise<unknown> {
     try {
-      const absolutePath = path.join(this.client.path, relativePath)
       const Module: unknown = await import(absolutePath)
         .then(value => value.default || value)
 
