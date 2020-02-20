@@ -18,7 +18,7 @@ export abstract class Event extends Structure {
 
   public readonly once: boolean
 
-  public readonly _bindRun: (...args: unknown[]) => unknown
+  public readonly _bindRun: (...args: unknown[]) => void
 
   public constructor (client: Client, options: EventOptions) {
     super(client)
@@ -34,5 +34,5 @@ export abstract class Event extends Structure {
     this._bindRun = this.run.bind(this)
   }
 
-  public abstract run (...args: unknown[]): unknown
+  public abstract run (...args: unknown[]): void
 }
