@@ -8,12 +8,18 @@ export class Client extends DjsClient {
 
   public readonly events: EventRegistry
 
+  public readonly path: string
+
   public constructor (options?: ClientOptions) {
     super(options)
 
     this.commands = new CommandRegistry(this)
 
     this.events = new EventRegistry(this)
+
+    this.path = require.main?.filename
+      ? path.dirname(require.main.filename)
+      : process.cwd()
   }
 
   public async login (token?: string): Promise<string> {

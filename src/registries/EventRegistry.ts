@@ -20,7 +20,7 @@ export class EventRegistry extends Registry<string, Event> {
   }
 
   public async registerAll (): Promise<Event[]> {
-    const modules = (await this.scanFiles('src/events/**/*.{js,ts}'))
+    const modules = (await this.scanFiles('events/**/*.{js,ts}'))
       .map((file) => this.loadModule(file))
 
     const result = (await Promise.all(modules))
