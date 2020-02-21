@@ -11,8 +11,10 @@ export default class extends Event {
   }
 
   public run (message: Message): void {
-    if (message.author.bot && message.system) return
+    if (message.author.bot || message.system) return
+    if (!message.guild) return
     if (!message.content.length) return
+    if (message.content.startsWith(this.client.prefix)) return
 
     this.updateUserSettings(message)
       .catch((e) => this.client.logger.error(e))
