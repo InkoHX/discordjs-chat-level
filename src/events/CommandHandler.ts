@@ -21,10 +21,7 @@ export default class CommandHandler extends Event {
 
     if (!command) return
 
-    try {
-      command.run(message, args[1])
-    } catch (error) {
-      this.client.logger.error(error)
-    }
+    command.run(message, ...args.slice(1))
+      .catch((error) => this.client.logger.error(error))
   }
 }
