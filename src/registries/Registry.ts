@@ -60,7 +60,7 @@ export class Registry<K, V> extends Collection<K, V> {
 
       return new Module(this.client)
     } catch (error) {
-      this.client.emit('error', error)
+      this.client.logger.error(error)
       process.exit(1)
     }
   }

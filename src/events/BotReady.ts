@@ -10,6 +10,6 @@ export default class extends Event {
   }
 
   public run (): void {
-    console.log('Ready')
+    this.client.logger.info('Ready!')
   }
 }

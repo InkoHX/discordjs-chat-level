@@ -38,7 +38,7 @@ export class Client extends DjsClient {
       this.commands.registerAll(),
       this.events.registerAll()
     ])
-      .catch(console.error)
+      .catch((e) => this.logger.error(e))
 
     return super.login(token)
   }

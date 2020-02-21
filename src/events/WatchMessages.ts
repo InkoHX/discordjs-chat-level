@@ -14,7 +14,8 @@ export default class extends Event {
     if (message.author.bot && message.system) return
     if (!message.content.length) return
 
-    this.updateUserSettings(message).catch(console.error)
+    this.updateUserSettings(message)
+      .catch((e) => this.client.logger.error(e))
   }
 
   private async updateUserSettings (message: Message): Promise<void> {

@@ -7,4 +7,5 @@ const bot = new Client({
   ]
 })
 
-bot.login().catch(console.error)
+bot.login()
+  .catch((e) => bot.logger.error(e))
