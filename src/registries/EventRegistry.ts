@@ -1,5 +1,5 @@
-import { Registry, RegisterData } from './Registry'
 import { Event } from '../structures'
+import { RegisterData, Registry } from './Registry'
 
 export class EventRegistry extends Registry<string, Event> {
   public register (data: RegisterData<string, Event>): Event {

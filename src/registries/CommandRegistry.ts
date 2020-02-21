@@ -1,5 +1,5 @@
-import { Registry, RegisterData } from './Registry'
 import Command from '../structures/Command'
+import { RegisterData, Registry } from './Registry'
 
 export class CommandRegistry extends Registry<string, Command> {
   public async registerAll (): Promise<Command[]> {

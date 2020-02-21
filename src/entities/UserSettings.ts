@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 /* eslint-disable new-cap */
-import { BaseEntity, Entity, PrimaryColumn, Column } from 'typeorm'
 import { User } from 'discord.js'
+import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm'
 
 @Entity()
 export class UserSettings extends BaseEntity {

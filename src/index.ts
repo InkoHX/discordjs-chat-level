@@ -1,5 +1,5 @@
-import 'reflect-metadata'
 import './extensions'
+import 'reflect-metadata'
 
 export * from './Client'
 export * from './common'

@@ -1,5 +1,6 @@
-import { Event, Client } from '..'
 import { Message } from 'discord.js'
+
+import { Client, Event } from '..'
 
 export default class extends Event {
   public constructor (client: Client) {
@@ -11,6 +12,7 @@ export default class extends Event {
 
   public run (message: Message): void {
     if (message.author.bot && message.system) return
+    console.log(message.content)
     this.updateUserData(message).catch(console.error)
   }
 

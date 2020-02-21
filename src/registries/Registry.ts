@@ -1,8 +1,9 @@
 import { Collection } from 'discord.js'
+import glob from 'glob'
+import util from 'util'
+
 import { Client } from '..'
 import { Class } from '../common'
-import util from 'util'
-import glob from 'glob'
 
 const globAsync = util.promisify(glob)
 

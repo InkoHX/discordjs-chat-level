@@ -1,7 +1,8 @@
-import { CommandRegistry, EventRegistry } from './registries'
 import { Client as DjsClient, ClientOptions } from 'discord.js'
-import { createConnection, Connection, getConnectionOptions } from 'typeorm'
 import path from 'path'
+import { Connection, createConnection, getConnectionOptions } from 'typeorm'
+
+import { CommandRegistry, EventRegistry } from './registries'
 
 export class Client extends DjsClient {
   public readonly commands: CommandRegistry

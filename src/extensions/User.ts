@@ -1,4 +1,5 @@
 import { Structures } from 'discord.js'
+
 import { UserSettings } from '../entities/UserSettings'
 
 declare module 'discord.js' {

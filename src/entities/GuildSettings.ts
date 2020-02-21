@@ -1,6 +1,6 @@
 /* eslint-disable new-cap */
-import { BaseEntity, Entity, PrimaryColumn } from 'typeorm'
 import { Guild } from 'discord.js'
+import { BaseEntity, Entity, PrimaryColumn } from 'typeorm'
 
 @Entity()
 export class GuildSettings extends BaseEntity {

@@ -1,6 +1,7 @@
-import Structure from './Structure'
-import { Client } from '..'
 import { EventEmitter } from 'events'
+
+import { Client } from '..'
+import Structure from './Structure'
 
 export type EventOptions = Readonly<{
   name: string,

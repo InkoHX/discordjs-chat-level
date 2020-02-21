@@ -1,6 +1,7 @@
-import Structure from './Structure'
-import { Client } from '..'
 import { Message } from 'discord.js'
+
+import { Client } from '..'
+import Structure from './Structure'
 
 export default abstract class Command extends Structure {
   public readonly name: string

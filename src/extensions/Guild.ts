@@ -1,4 +1,5 @@
 import { Structures } from 'discord.js'
+
 import { GuildSettings } from '../entities/GuildSettings'
 
 declare module 'discord.js' {
