@@ -3,7 +3,7 @@ import { Message } from 'discord.js'
 import { Client } from '..'
 import Structure from './Structure'
 
-export default abstract class Command extends Structure {
+export abstract class Command extends Structure {
   public readonly name: string
 
   public constructor (client: Client, name: string) {

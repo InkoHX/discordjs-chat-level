@@ -14,6 +14,8 @@ export class Client extends DjsClient {
 
   public readonly path: string
 
+  public readonly prefix: string
+
   public constructor (options?: ClientOptions) {
     super(options)
 
@@ -30,6 +32,8 @@ export class Client extends DjsClient {
     this.path = require.main?.filename
       ? path.dirname(require.main.filename)
       : process.cwd()
+
+    this.prefix = 'ls!'
   }
 
   public async login (token?: string): Promise<string> {

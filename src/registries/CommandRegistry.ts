@@ -1,4 +1,4 @@
-import Command from '../structures/Command'
+import { Command } from '../structures'
 import { RegisterData, Registry } from './Registry'
 
 export class CommandRegistry extends Registry<string, Command> {
