@@ -12,5 +12,5 @@ export abstract class Command extends Structure {
     this.name = name.toLowerCase()
   }
 
-  public abstract run (message: Message, ...args: string[]): unknown
+  public abstract run (message: Message, ...args: string[]): Promise<Message | Message[]>
 }
