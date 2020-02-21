@@ -1,4 +1,5 @@
 import { Client as DjsClient, ClientOptions } from 'discord.js'
+import { Logger } from 'parrot-logger'
 import path from 'path'
 import { Connection, createConnection, getConnectionOptions } from 'typeorm'
 
@@ -9,6 +10,8 @@ export class Client extends DjsClient {
 
   public readonly events: EventRegistry
 
+  public readonly logger: Logger
+
   public readonly path: string
 
   public constructor (options?: ClientOptions) {
@@ -17,6 +20,12 @@ export class Client extends DjsClient {
     this.commands = new CommandRegistry(this)
 
     this.events = new EventRegistry(this)
+
+    this.logger = new Logger({
+      file: {
+        logging: true
+      }
+    })
 
     this.path = require.main?.filename
       ? path.dirname(require.main.filename)
