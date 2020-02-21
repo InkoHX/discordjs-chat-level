@@ -1,4 +1,4 @@
-import { Message } from 'discord.js'
+import { Message, Util } from 'discord.js'
 
 import { Client, Event } from '..'
 
@@ -12,24 +12,22 @@ export default class extends Event {
 
   public run (message: Message): void {
     if (message.author.bot && message.system) return
-    console.log(message.content)
-    this.updateUserData(message).catch(console.error)
+    if (!message.content.length) return
+
+    this.updateUserSettings(message).catch(console.error)
   }
 
-  private async updateUserData (message: Message): Promise<void> {
+  private async updateUserSettings (message: Message): Promise<void> {
     const settings = await message.author.getSettings()
 
-    settings.exp += message.content.length
-    if (this.isLevelUp(settings.exp, settings.maxExp)) {
-      settings.exp = 0
-      settings.maxExp *= 2
+    settings.exp += Util.escapeMarkdown(message.content).length
+
+    while (settings.exp >= settings.maxExp) {
       settings.level += 1
+      settings.exp -= settings.maxExp
+      settings.maxExp *= 2
     }
 
     await settings.save()
-  }
-
-  private isLevelUp (exp: number, maxExp: number): boolean {
-    return exp >= maxExp
   }
 }
