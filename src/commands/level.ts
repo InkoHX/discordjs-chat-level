@@ -10,7 +10,8 @@ export default class Level extends Command {
   public async run (message: Message): Promise<Message> {
     const settings = await message.author.getSettings()
     const embed = new MessageEmbed()
-      .setColor('RANDOM')
+      .setColor('GREEN')
+      .setDescription('経験値はメッセージを送信すると増えます。')
       .setTitle(`${message.author.username} status`)
       .addField('レベル', settings.level)
       .addField('現在の経験値', settings.exp)
