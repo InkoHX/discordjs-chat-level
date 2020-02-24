@@ -4,7 +4,9 @@ import { Client, Command } from '..'
 
 export default class Level extends Command {
   public constructor (client: Client) {
-    super(client, 'level')
+    super(client, 'level', {
+      requiredPermissions: ['EMBED_LINKS']
+    })
   }
 
   public async run (message: Message): Promise<Message> {

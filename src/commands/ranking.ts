@@ -3,7 +3,9 @@ import { Message, MessageEmbed } from 'discord.js'
 
 export default class Ranking extends Command {
   public constructor (client: Client) {
-    super(client, 'ranking')
+    super(client, 'ranking', {
+      requiredPermissions: ['EMBED_LINKS']
+    })
   }
 
   public async run (message: Message): Promise<Message> {
