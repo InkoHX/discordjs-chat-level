@@ -62,7 +62,7 @@ export default class CommandHandler extends Event {
     if (!(channel instanceof TextChannel)) return false
     const missing = channel.permissionsFor(this.client.user)?.missing(command.requiredPermission, false)
 
-    if (missing) {
+    if (missing && missing.length) {
       channel.send(missingMessage(missing))
         .catch(error => this.client.logger.error(error))
 
