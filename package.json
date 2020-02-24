@@ -9,7 +9,10 @@
     "compile": "tsc -p .",
     "compile:test": "tsc -p . --noEmit",
     "lint": "eslint --ext .ts .",
-    "lint:fix": "eslint --ext .ts . --fix"
+    "lint:fix": "eslint --ext .ts . --fix",
+    "migration:run": "npx ts-node ./node_modules/typeorm/cli.js migration:run",
+    "migration:revert": "npx ts-node ./node_modules/typeorm/cli.js migration:revert",
+    "migration:show": "npx ts-node ./node_modules/typeorm/cli.js migration:show"
   },
   "dependencies": {
     "discord.js": "github:discordjs/discord.js",
