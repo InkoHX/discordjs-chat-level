@@ -1,5 +1,7 @@
 # discordjs-chat-level
 
+![CI](https://github.com/InkoHX/discordjs-chat-level/workflows/CI/badge.svg)
+
 **Discord.js v12**と**TypeORM**を組み合わせたレベルシステムボット
 
 ## Requirement
